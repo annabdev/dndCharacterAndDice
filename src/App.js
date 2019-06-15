@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+class Form extends Component {
+  state = {
+    name: ""
+  };
+
+//Post 
+handleSubmit = async e => {
+    e.preventDefault();
+    const data = JSON.stringify(this.state);
+    //need to enter server endpoint after the fetch
+    await fetch("", {
+        method: "POST",
+        body: data,
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+};
+
+myfunction() {
+  console.log("CLICKED");
 }
 
-export default App;
+  render(){
+    console.log(this)
+    console.log(this.state)
+  return (
+      <div>
+        
+    <br />
+          <form onSubmit={this.handleSubmit}>
+              <label>
+                  Character Name:
+  <input placeholder="character name" type="text" name="name" onChange={e => this.setState({ name: e.target.value })} />
+              </label>
+
+              <input type="submit" value="Submit" />
+              </form>
+              <button><img src="https://365psd.com/images/previews/884/six-sided-dice-d6-52128.png" width="50" alt="d6" onClick={this.myfunction} /></button>
+              </div>
+    );
+}
+}
+
+export default Form;
