@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 class Characters extends Component {
     state = {
         characters: [],
-        character: "",
+        name: "",
         strength: null,
         dexterity: null,
         constitution: null,
@@ -21,7 +21,7 @@ class Characters extends Component {
     handleUpdate = async (e, _id) => {
         e.preventDefault();
         const update = JSON.stringify(this.state);
-        await fetch("http:localhost:4000" + _id, {
+        await fetch("http:localhost:4000/" + _id, {
             method: "PUT",
             body: update,
             headers: {
@@ -33,7 +33,7 @@ class Characters extends Component {
 
     //Delete
     handleDelete = async _id => {
-        await fetch("http://localhost:4000" +_id, {
+        await fetch("http://localhost:4000/" + _id, {
             method: "DELETE"
         });
         await this.getCharacters();
@@ -47,12 +47,12 @@ class Characters extends Component {
         })
         .then(results => {
             console.log(results)
-            this.setState( {Characters:results} );
+            this.setState( {characters:results} );
         });
     };
 
     filterCharacters = e => {
-        let character = this.state.character;
+        let character = this.state.characters;
         character = character.filter(character => {
             return (character) !==1
         });
@@ -69,12 +69,12 @@ class Characters extends Component {
             {this.state.characters.map( ( character, index) => (
                 <div className="border" key={index}>
                     <h2>{character.name}</h2>
-                    <p>{character.strength}</p>
-                    <p>{character.dexterity}</p>
-                    <p>{character.constitution}</p>
-                    <p>{character.intelligence}</p>
-                    <p>{character.wisdom}</p>
-                    <p>{character.charisma}</p>
+                    <p>Strength:{character.strength}</p>
+                    <p>Dexterity:{character.dexterity}</p>
+                    <p>Constitution:{character.constitution}</p>
+                    <p>Intelligence:{character.intelligence}</p>
+                    <p>Wisdom:{character.wisdom}</p>
+                    <p>Charisma:{character.charisma}</p>
                     <button
                     type="button"
                     onClick={() => this.handleDelete(character._id)}>
