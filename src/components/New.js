@@ -24,7 +24,7 @@ width: 100%`
 
 const Name = styled.input`
 display: flex;
-flex-direction: row;
+flex-direction: column;
 margin: 5px;
 padding: 5px;
 width: 100px;
@@ -34,16 +34,16 @@ border-radius: 3px;`
 
 
 
-const Button = styled.button`
-background: ${props => props.primary ? "palevioletred" : "lightgrey"};
-color: ${props => props.primary ?
-"white": "white"};
-font-size: 1em;
-margin: 1em;
-padding: 0.25 em 1em;
-height: 50px;
-width: 80px;
-`
+// const Button = styled.button`
+// background: ${props => props.primary ? "palevioletred" : "lightgrey"};
+// color: ${props => props.primary ?
+// "white": "white"};
+// font-size: 1em;
+// margin: 1em;
+// padding: 0.25 em 1em;
+// height: 50px;
+// width: 80px;
+// `
 
 const Input = styled.input`
 margin: 5px;
@@ -54,30 +54,30 @@ background: #F1B8AF;
 border: none;
 border-radius: 1px;
 width: 30px;
-height: 20px;
+button-height: 20px;
 justify-content: space-evenly;`
 
-const Attributes = styled.div`
-display: flex;
-border: 1 px solid black;
-flex-wrap: no-wrap;
-width: 300px;
-height: 300px;
-justify-content: center;
-align-items: stretch;
-flex-direction: column;
-`
+// const Attributes = styled.div`
+// display: flex;
+// border: 1 px solid black;
+// flex-wrap: no-wrap;
+// width: 300px;
+// height: 300px;
+// justify-content: center;
+// align-items: stretch;
+// flex-direction: column;
+// `
 
-const SecondAtt = styled.div`
-display: flex;
-border: 1 px solid black;
-flex-wrap: wrap;
-width: 300px;
-height: 300px;
-justify-content: space-evenly;
-align-items: stretch;
-flex-direction: column;
-`
+// const SecondAtt = styled.div`
+// display: flex;
+// border: 1 px solid black;
+// flex-wrap: wrap;
+// width: 300px;
+// height: 300px;
+// justify-content: space-evenly;
+// align-items: stretch;
+// flex-direction: column;
+// `
 
 const Container1 = styled.div`
 display:flex;
@@ -100,6 +100,13 @@ display: flex;
 flex-direction:row;
 justify-content: space-evenly;
 align-items: stretch;
+`
+const Container4 = styled.div`
+display:flex;
+flex-direction:row;
+justify-content: space-evenly;
+align-items: stretch;
+flex-flow: row wrap;
 `
 
 class New extends Component {
@@ -142,7 +149,7 @@ class New extends Component {
   <Name placeholder="Character Name" type="text" name="name" onChange={e => this.setState({ name: e.target.value })} />
             </label>
             </form>
-            <Attributes>
+            <Container4>
             <br />
             <form>
             <label>
@@ -158,8 +165,8 @@ class New extends Component {
   <Input placeholder="0" type="number" name="constitution" onChange={e => this.setState({ constitution: e.target.value })} />
             </label>
             </form>
-            </Attributes>
-            <SecondAtt>
+            </Container4>
+            <Container4>
             <form>
             <label>
               Intelligence:
@@ -175,7 +182,7 @@ class New extends Component {
             </label>
             <input type="submit" value="Submit" onSubmit={this.handleSubmit} /> 
           </form>
-          </SecondAtt>
+          </Container4>
           </Container2>
         <br />
         <Container3>
